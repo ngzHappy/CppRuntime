@@ -1,4 +1,4 @@
-#include <RuntimeType.hpp>
+﻿#include <RuntimeType.hpp>
 #include <cassert>
 
 void test_void_shared() {

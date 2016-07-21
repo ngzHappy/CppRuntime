@@ -236,7 +236,5 @@ RUNTIME_TYPE_IMPORT const RuntimeClasInfo * get_runtime_class_info(const std::ty
 }
 }
 
-
-
 #endif
 

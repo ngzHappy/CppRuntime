@@ -11,7 +11,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     test_void_type.cpp \
-    test_static_type_cast.cpp
+    test_static_type_cast.cpp \
+    test_runtime_info.cpp
 INCLUDEPATH +=$$PWD/../CppRuntime
 
 win32-msvc*{
