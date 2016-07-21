@@ -59,1477 +59,1478 @@ public:
     }
 
     StaticCastMap() {
-        /*init cast functions*/
-        /* from:bool to:std::int32_t */
-        cast_functions_[make_pair_from_to<bool,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:bool to:std::int64_t */
-        cast_functions_[make_pair_from_to<bool,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:bool to:std::int16_t */
-        cast_functions_[make_pair_from_to<bool,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:bool to:std::int8_t */
-        cast_functions_[make_pair_from_to<bool,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:bool to:std::uint32_t */
-        cast_functions_[make_pair_from_to<bool,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:bool to:std::uint64_t */
-        cast_functions_[make_pair_from_to<bool,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:bool to:std::uint16_t */
-        cast_functions_[make_pair_from_to<bool,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:bool to:std::uint8_t */
-        cast_functions_[make_pair_from_to<bool,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:bool to:char */
-        cast_functions_[make_pair_from_to<bool,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:bool to:char16_t */
-        cast_functions_[make_pair_from_to<bool,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:bool to:char32_t */
-        cast_functions_[make_pair_from_to<bool,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:bool to:float */
-        cast_functions_[make_pair_from_to<bool,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:bool to:double */
-        cast_functions_[make_pair_from_to<bool,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:bool to:long double */
-        cast_functions_[make_pair_from_to<bool,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::int32_t to:bool */
-        cast_functions_[make_pair_from_to<std::int32_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::int32_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<std::int32_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<std::int32_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<std::int32_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<std::int32_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<std::int32_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<std::int32_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<std::int32_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:char */
-        cast_functions_[make_pair_from_to<std::int32_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::int32_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::int32_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::int32_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::int32_t to:float */
-        cast_functions_[make_pair_from_to<std::int32_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::int32_t to:double */
-        cast_functions_[make_pair_from_to<std::int32_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::int32_t to:long double */
-        cast_functions_[make_pair_from_to<std::int32_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::int64_t to:bool */
-        cast_functions_[make_pair_from_to<std::int64_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::int64_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<std::int64_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<std::int64_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<std::int64_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<std::int64_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<std::int64_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<std::int64_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<std::int64_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:char */
-        cast_functions_[make_pair_from_to<std::int64_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::int64_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::int64_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::int64_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::int64_t to:float */
-        cast_functions_[make_pair_from_to<std::int64_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::int64_t to:double */
-        cast_functions_[make_pair_from_to<std::int64_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::int64_t to:long double */
-        cast_functions_[make_pair_from_to<std::int64_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::int16_t to:bool */
-        cast_functions_[make_pair_from_to<std::int16_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::int16_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<std::int16_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<std::int16_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<std::int16_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<std::int16_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<std::int16_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<std::int16_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<std::int16_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:char */
-        cast_functions_[make_pair_from_to<std::int16_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::int16_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::int16_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::int16_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::int16_t to:float */
-        cast_functions_[make_pair_from_to<std::int16_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::int16_t to:double */
-        cast_functions_[make_pair_from_to<std::int16_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::int16_t to:long double */
-        cast_functions_[make_pair_from_to<std::int16_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::int8_t to:bool */
-        cast_functions_[make_pair_from_to<std::int8_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::int8_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<std::int8_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<std::int8_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<std::int8_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<std::int8_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<std::int8_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<std::int8_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<std::int8_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:char */
-        cast_functions_[make_pair_from_to<std::int8_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::int8_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::int8_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::int8_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::int8_t to:float */
-        cast_functions_[make_pair_from_to<std::int8_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::int8_t to:double */
-        cast_functions_[make_pair_from_to<std::int8_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::int8_t to:long double */
-        cast_functions_[make_pair_from_to<std::int8_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::uint32_t to:bool */
-        cast_functions_[make_pair_from_to<std::uint32_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::uint32_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:char */
-        cast_functions_[make_pair_from_to<std::uint32_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::uint32_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::uint32_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::uint32_t to:float */
-        cast_functions_[make_pair_from_to<std::uint32_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::uint32_t to:double */
-        cast_functions_[make_pair_from_to<std::uint32_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::uint32_t to:long double */
-        cast_functions_[make_pair_from_to<std::uint32_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::uint64_t to:bool */
-        cast_functions_[make_pair_from_to<std::uint64_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::uint64_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:char */
-        cast_functions_[make_pair_from_to<std::uint64_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::uint64_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::uint64_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::uint64_t to:float */
-        cast_functions_[make_pair_from_to<std::uint64_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::uint64_t to:double */
-        cast_functions_[make_pair_from_to<std::uint64_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::uint64_t to:long double */
-        cast_functions_[make_pair_from_to<std::uint64_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::uint16_t to:bool */
-        cast_functions_[make_pair_from_to<std::uint16_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::uint16_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:char */
-        cast_functions_[make_pair_from_to<std::uint16_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::uint16_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::uint16_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::uint16_t to:float */
-        cast_functions_[make_pair_from_to<std::uint16_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::uint16_t to:double */
-        cast_functions_[make_pair_from_to<std::uint16_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::uint16_t to:long double */
-        cast_functions_[make_pair_from_to<std::uint16_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:std::uint8_t to:bool */
-        cast_functions_[make_pair_from_to<std::uint8_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:std::uint8_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:char */
-        cast_functions_[make_pair_from_to<std::uint8_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:std::uint8_t to:char16_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:char32_t */
-        cast_functions_[make_pair_from_to<std::uint8_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:std::uint8_t to:float */
-        cast_functions_[make_pair_from_to<std::uint8_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:std::uint8_t to:double */
-        cast_functions_[make_pair_from_to<std::uint8_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:std::uint8_t to:long double */
-        cast_functions_[make_pair_from_to<std::uint8_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:char to:bool */
-        cast_functions_[make_pair_from_to<char,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:char to:std::int32_t */
-        cast_functions_[make_pair_from_to<char,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:char to:std::int64_t */
-        cast_functions_[make_pair_from_to<char,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:char to:std::int16_t */
-        cast_functions_[make_pair_from_to<char,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:char to:std::int8_t */
-        cast_functions_[make_pair_from_to<char,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:char to:std::uint32_t */
-        cast_functions_[make_pair_from_to<char,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:char to:std::uint64_t */
-        cast_functions_[make_pair_from_to<char,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:char to:std::uint16_t */
-        cast_functions_[make_pair_from_to<char,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:char to:std::uint8_t */
-        cast_functions_[make_pair_from_to<char,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:char to:char16_t */
-        cast_functions_[make_pair_from_to<char,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:char to:char32_t */
-        cast_functions_[make_pair_from_to<char,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:char to:float */
-        cast_functions_[make_pair_from_to<char,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:char to:double */
-        cast_functions_[make_pair_from_to<char,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:char to:long double */
-        cast_functions_[make_pair_from_to<char,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:char16_t to:bool */
-        cast_functions_[make_pair_from_to<char16_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:char16_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<char16_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:char16_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<char16_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:char16_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<char16_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:char16_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<char16_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:char16_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<char16_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:char16_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<char16_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:char16_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<char16_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:char16_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<char16_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:char16_t to:char */
-        cast_functions_[make_pair_from_to<char16_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:char16_t to:char32_t */
-        cast_functions_[make_pair_from_to<char16_t,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:char16_t to:float */
-        cast_functions_[make_pair_from_to<char16_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:char16_t to:double */
-        cast_functions_[make_pair_from_to<char16_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:char16_t to:long double */
-        cast_functions_[make_pair_from_to<char16_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:char32_t to:bool */
-        cast_functions_[make_pair_from_to<char32_t,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:char32_t to:std::int32_t */
-        cast_functions_[make_pair_from_to<char32_t,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:char32_t to:std::int64_t */
-        cast_functions_[make_pair_from_to<char32_t,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:char32_t to:std::int16_t */
-        cast_functions_[make_pair_from_to<char32_t,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:char32_t to:std::int8_t */
-        cast_functions_[make_pair_from_to<char32_t,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:char32_t to:std::uint32_t */
-        cast_functions_[make_pair_from_to<char32_t,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:char32_t to:std::uint64_t */
-        cast_functions_[make_pair_from_to<char32_t,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:char32_t to:std::uint16_t */
-        cast_functions_[make_pair_from_to<char32_t,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:char32_t to:std::uint8_t */
-        cast_functions_[make_pair_from_to<char32_t,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:char32_t to:char */
-        cast_functions_[make_pair_from_to<char32_t,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:char32_t to:char16_t */
-        cast_functions_[make_pair_from_to<char32_t,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:char32_t to:float */
-        cast_functions_[make_pair_from_to<char32_t,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:char32_t to:double */
-        cast_functions_[make_pair_from_to<char32_t,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:char32_t to:long double */
-        cast_functions_[make_pair_from_to<char32_t,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:float to:bool */
-        cast_functions_[make_pair_from_to<float,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:float to:std::int32_t */
-        cast_functions_[make_pair_from_to<float,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:float to:std::int64_t */
-        cast_functions_[make_pair_from_to<float,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:float to:std::int16_t */
-        cast_functions_[make_pair_from_to<float,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:float to:std::int8_t */
-        cast_functions_[make_pair_from_to<float,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:float to:std::uint32_t */
-        cast_functions_[make_pair_from_to<float,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:float to:std::uint64_t */
-        cast_functions_[make_pair_from_to<float,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:float to:std::uint16_t */
-        cast_functions_[make_pair_from_to<float,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:float to:std::uint8_t */
-        cast_functions_[make_pair_from_to<float,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:float to:char */
-        cast_functions_[make_pair_from_to<float,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:float to:char16_t */
-        cast_functions_[make_pair_from_to<float,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:float to:char32_t */
-        cast_functions_[make_pair_from_to<float,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:float to:double */
-        cast_functions_[make_pair_from_to<float,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
-        /* from:float to:long double */
-        cast_functions_[make_pair_from_to<float,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:double to:bool */
-        cast_functions_[make_pair_from_to<double,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:double to:std::int32_t */
-        cast_functions_[make_pair_from_to<double,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:double to:std::int64_t */
-        cast_functions_[make_pair_from_to<double,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:double to:std::int16_t */
-        cast_functions_[make_pair_from_to<double,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:double to:std::int8_t */
-        cast_functions_[make_pair_from_to<double,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:double to:std::uint32_t */
-        cast_functions_[make_pair_from_to<double,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:double to:std::uint64_t */
-        cast_functions_[make_pair_from_to<double,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:double to:std::uint16_t */
-        cast_functions_[make_pair_from_to<double,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:double to:std::uint8_t */
-        cast_functions_[make_pair_from_to<double,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:double to:char */
-        cast_functions_[make_pair_from_to<double,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:double to:char16_t */
-        cast_functions_[make_pair_from_to<double,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:double to:char32_t */
-        cast_functions_[make_pair_from_to<double,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:double to:float */
-        cast_functions_[make_pair_from_to<double,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:double to:long double */
-        cast_functions_[make_pair_from_to<double,long double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
-            auto * varTo=new auto(static_cast<long double>(varFrom));
-            return{ typeid(long double),std::shared_ptr<long double>(varTo) };
-        };
-
-        /* from:long double to:bool */
-        cast_functions_[make_pair_from_to<long double,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<bool>(varFrom));
-            return{ typeid(bool),std::shared_ptr<bool>(varTo) };
-        };
-
-        /* from:long double to:std::int32_t */
-        cast_functions_[make_pair_from_to<long double,std::int32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
-            return{ typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo) };
-        };
-
-        /* from:long double to:std::int64_t */
-        cast_functions_[make_pair_from_to<long double,std::int64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
-            return{ typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo) };
-        };
-
-        /* from:long double to:std::int16_t */
-        cast_functions_[make_pair_from_to<long double,std::int16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
-            return{ typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo) };
-        };
-
-        /* from:long double to:std::int8_t */
-        cast_functions_[make_pair_from_to<long double,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
-            return{ typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo) };
-        };
-
-        /* from:long double to:std::uint32_t */
-        cast_functions_[make_pair_from_to<long double,std::uint32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
-            return{ typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo) };
-        };
-
-        /* from:long double to:std::uint64_t */
-        cast_functions_[make_pair_from_to<long double,std::uint64_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
-            return{ typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo) };
-        };
-
-        /* from:long double to:std::uint16_t */
-        cast_functions_[make_pair_from_to<long double,std::uint16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
-            return{ typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo) };
-        };
-
-        /* from:long double to:std::uint8_t */
-        cast_functions_[make_pair_from_to<long double,std::uint8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
-            return{ typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo) };
-        };
-
-        /* from:long double to:char */
-        cast_functions_[make_pair_from_to<long double,char>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<char>(varFrom));
-            return{ typeid(char),std::shared_ptr<char>(varTo) };
-        };
-
-        /* from:long double to:char16_t */
-        cast_functions_[make_pair_from_to<long double,char16_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<char16_t>(varFrom));
-            return{ typeid(char16_t),std::shared_ptr<char16_t>(varTo) };
-        };
-
-        /* from:long double to:char32_t */
-        cast_functions_[make_pair_from_to<long double,char32_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<char32_t>(varFrom));
-            return{ typeid(char32_t),std::shared_ptr<char32_t>(varTo) };
-        };
-
-        /* from:long double to:float */
-        cast_functions_[make_pair_from_to<long double,float>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<float>(varFrom));
-            return{ typeid(float),std::shared_ptr<float>(varTo) };
-        };
-
-        /* from:long double to:double */
-        cast_functions_[make_pair_from_to<long double,double>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
-            const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
-            auto * varTo=new auto(static_cast<double>(varFrom));
-            return{ typeid(double),std::shared_ptr<double>(varTo) };
-        };
-
+        
+        {/*init cast functions*/
+         /* from:bool to:std::int32_t */
+            cast_functions_[make_pair_from_to<bool,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:bool to:std::int64_t */
+            cast_functions_[make_pair_from_to<bool,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:bool to:std::int16_t */
+            cast_functions_[make_pair_from_to<bool,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:bool to:std::int8_t */
+            cast_functions_[make_pair_from_to<bool,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:bool to:std::uint32_t */
+            cast_functions_[make_pair_from_to<bool,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:bool to:std::uint64_t */
+            cast_functions_[make_pair_from_to<bool,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:bool to:std::uint16_t */
+            cast_functions_[make_pair_from_to<bool,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:bool to:std::uint8_t */
+            cast_functions_[make_pair_from_to<bool,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:bool to:char */
+            cast_functions_[make_pair_from_to<bool,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:bool to:char16_t */
+            cast_functions_[make_pair_from_to<bool,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:bool to:char32_t */
+            cast_functions_[make_pair_from_to<bool,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:bool to:float */
+            cast_functions_[make_pair_from_to<bool,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:bool to:double */
+            cast_functions_[make_pair_from_to<bool,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:bool to:long double */
+            cast_functions_[make_pair_from_to<bool,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::int32_t to:bool */
+            cast_functions_[make_pair_from_to<std::int32_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::int32_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<std::int32_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<std::int32_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<std::int32_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<std::int32_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<std::int32_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<std::int32_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<std::int32_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:char */
+            cast_functions_[make_pair_from_to<std::int32_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::int32_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::int32_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::int32_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::int32_t to:float */
+            cast_functions_[make_pair_from_to<std::int32_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::int32_t to:double */
+            cast_functions_[make_pair_from_to<std::int32_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::int32_t to:long double */
+            cast_functions_[make_pair_from_to<std::int32_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::int64_t to:bool */
+            cast_functions_[make_pair_from_to<std::int64_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::int64_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<std::int64_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<std::int64_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<std::int64_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<std::int64_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<std::int64_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<std::int64_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<std::int64_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:char */
+            cast_functions_[make_pair_from_to<std::int64_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::int64_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::int64_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::int64_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::int64_t to:float */
+            cast_functions_[make_pair_from_to<std::int64_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::int64_t to:double */
+            cast_functions_[make_pair_from_to<std::int64_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::int64_t to:long double */
+            cast_functions_[make_pair_from_to<std::int64_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::int16_t to:bool */
+            cast_functions_[make_pair_from_to<std::int16_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::int16_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<std::int16_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<std::int16_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<std::int16_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<std::int16_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<std::int16_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<std::int16_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<std::int16_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:char */
+            cast_functions_[make_pair_from_to<std::int16_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::int16_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::int16_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::int16_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::int16_t to:float */
+            cast_functions_[make_pair_from_to<std::int16_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::int16_t to:double */
+            cast_functions_[make_pair_from_to<std::int16_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::int16_t to:long double */
+            cast_functions_[make_pair_from_to<std::int16_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::int8_t to:bool */
+            cast_functions_[make_pair_from_to<std::int8_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::int8_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<std::int8_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<std::int8_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<std::int8_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<std::int8_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<std::int8_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<std::int8_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<std::int8_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:char */
+            cast_functions_[make_pair_from_to<std::int8_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::int8_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::int8_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::int8_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::int8_t to:float */
+            cast_functions_[make_pair_from_to<std::int8_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::int8_t to:double */
+            cast_functions_[make_pair_from_to<std::int8_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::int8_t to:long double */
+            cast_functions_[make_pair_from_to<std::int8_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::uint32_t to:bool */
+            cast_functions_[make_pair_from_to<std::uint32_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::uint32_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:char */
+            cast_functions_[make_pair_from_to<std::uint32_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::uint32_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::uint32_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::uint32_t to:float */
+            cast_functions_[make_pair_from_to<std::uint32_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::uint32_t to:double */
+            cast_functions_[make_pair_from_to<std::uint32_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::uint32_t to:long double */
+            cast_functions_[make_pair_from_to<std::uint32_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::uint64_t to:bool */
+            cast_functions_[make_pair_from_to<std::uint64_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::uint64_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:char */
+            cast_functions_[make_pair_from_to<std::uint64_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::uint64_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::uint64_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::uint64_t to:float */
+            cast_functions_[make_pair_from_to<std::uint64_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::uint64_t to:double */
+            cast_functions_[make_pair_from_to<std::uint64_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::uint64_t to:long double */
+            cast_functions_[make_pair_from_to<std::uint64_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::uint16_t to:bool */
+            cast_functions_[make_pair_from_to<std::uint16_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::uint16_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:char */
+            cast_functions_[make_pair_from_to<std::uint16_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::uint16_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::uint16_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::uint16_t to:float */
+            cast_functions_[make_pair_from_to<std::uint16_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::uint16_t to:double */
+            cast_functions_[make_pair_from_to<std::uint16_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::uint16_t to:long double */
+            cast_functions_[make_pair_from_to<std::uint16_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:std::uint8_t to:bool */
+            cast_functions_[make_pair_from_to<std::uint8_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:std::uint8_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:char */
+            cast_functions_[make_pair_from_to<std::uint8_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:std::uint8_t to:char16_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:char32_t */
+            cast_functions_[make_pair_from_to<std::uint8_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:std::uint8_t to:float */
+            cast_functions_[make_pair_from_to<std::uint8_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:std::uint8_t to:double */
+            cast_functions_[make_pair_from_to<std::uint8_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:std::uint8_t to:long double */
+            cast_functions_[make_pair_from_to<std::uint8_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:char to:bool */
+            cast_functions_[make_pair_from_to<char,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:char to:std::int32_t */
+            cast_functions_[make_pair_from_to<char,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:char to:std::int64_t */
+            cast_functions_[make_pair_from_to<char,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:char to:std::int16_t */
+            cast_functions_[make_pair_from_to<char,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:char to:std::int8_t */
+            cast_functions_[make_pair_from_to<char,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:char to:std::uint32_t */
+            cast_functions_[make_pair_from_to<char,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:char to:std::uint64_t */
+            cast_functions_[make_pair_from_to<char,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:char to:std::uint16_t */
+            cast_functions_[make_pair_from_to<char,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:char to:std::uint8_t */
+            cast_functions_[make_pair_from_to<char,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:char to:char16_t */
+            cast_functions_[make_pair_from_to<char,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:char to:char32_t */
+            cast_functions_[make_pair_from_to<char,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:char to:float */
+            cast_functions_[make_pair_from_to<char,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:char to:double */
+            cast_functions_[make_pair_from_to<char,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:char to:long double */
+            cast_functions_[make_pair_from_to<char,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:char16_t to:bool */
+            cast_functions_[make_pair_from_to<char16_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:char16_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<char16_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:char16_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<char16_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:char16_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<char16_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:char16_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<char16_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:char16_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<char16_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:char16_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<char16_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:char16_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<char16_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:char16_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<char16_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:char16_t to:char */
+            cast_functions_[make_pair_from_to<char16_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:char16_t to:char32_t */
+            cast_functions_[make_pair_from_to<char16_t,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:char16_t to:float */
+            cast_functions_[make_pair_from_to<char16_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:char16_t to:double */
+            cast_functions_[make_pair_from_to<char16_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:char16_t to:long double */
+            cast_functions_[make_pair_from_to<char16_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char16_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:char32_t to:bool */
+            cast_functions_[make_pair_from_to<char32_t,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:char32_t to:std::int32_t */
+            cast_functions_[make_pair_from_to<char32_t,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:char32_t to:std::int64_t */
+            cast_functions_[make_pair_from_to<char32_t,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:char32_t to:std::int16_t */
+            cast_functions_[make_pair_from_to<char32_t,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:char32_t to:std::int8_t */
+            cast_functions_[make_pair_from_to<char32_t,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:char32_t to:std::uint32_t */
+            cast_functions_[make_pair_from_to<char32_t,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:char32_t to:std::uint64_t */
+            cast_functions_[make_pair_from_to<char32_t,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:char32_t to:std::uint16_t */
+            cast_functions_[make_pair_from_to<char32_t,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:char32_t to:std::uint8_t */
+            cast_functions_[make_pair_from_to<char32_t,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:char32_t to:char */
+            cast_functions_[make_pair_from_to<char32_t,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:char32_t to:char16_t */
+            cast_functions_[make_pair_from_to<char32_t,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:char32_t to:float */
+            cast_functions_[make_pair_from_to<char32_t,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:char32_t to:double */
+            cast_functions_[make_pair_from_to<char32_t,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:char32_t to:long double */
+            cast_functions_[make_pair_from_to<char32_t,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const char32_t*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:float to:bool */
+            cast_functions_[make_pair_from_to<float,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:float to:std::int32_t */
+            cast_functions_[make_pair_from_to<float,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:float to:std::int64_t */
+            cast_functions_[make_pair_from_to<float,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:float to:std::int16_t */
+            cast_functions_[make_pair_from_to<float,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:float to:std::int8_t */
+            cast_functions_[make_pair_from_to<float,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:float to:std::uint32_t */
+            cast_functions_[make_pair_from_to<float,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:float to:std::uint64_t */
+            cast_functions_[make_pair_from_to<float,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:float to:std::uint16_t */
+            cast_functions_[make_pair_from_to<float,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:float to:std::uint8_t */
+            cast_functions_[make_pair_from_to<float,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:float to:char */
+            cast_functions_[make_pair_from_to<float,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:float to:char16_t */
+            cast_functions_[make_pair_from_to<float,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:float to:char32_t */
+            cast_functions_[make_pair_from_to<float,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:float to:double */
+            cast_functions_[make_pair_from_to<float,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+
+            /* from:float to:long double */
+            cast_functions_[make_pair_from_to<float,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:double to:bool */
+            cast_functions_[make_pair_from_to<double,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:double to:std::int32_t */
+            cast_functions_[make_pair_from_to<double,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:double to:std::int64_t */
+            cast_functions_[make_pair_from_to<double,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:double to:std::int16_t */
+            cast_functions_[make_pair_from_to<double,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:double to:std::int8_t */
+            cast_functions_[make_pair_from_to<double,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:double to:std::uint32_t */
+            cast_functions_[make_pair_from_to<double,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:double to:std::uint64_t */
+            cast_functions_[make_pair_from_to<double,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:double to:std::uint16_t */
+            cast_functions_[make_pair_from_to<double,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:double to:std::uint8_t */
+            cast_functions_[make_pair_from_to<double,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:double to:char */
+            cast_functions_[make_pair_from_to<double,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:double to:char16_t */
+            cast_functions_[make_pair_from_to<double,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:double to:char32_t */
+            cast_functions_[make_pair_from_to<double,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:double to:float */
+            cast_functions_[make_pair_from_to<double,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:double to:long double */
+            cast_functions_[make_pair_from_to<double,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+                auto * varTo=new auto(static_cast<long double>(varFrom));
+                return{typeid(long double),std::shared_ptr<long double>(varTo)};
+            };
+
+            /* from:long double to:bool */
+            cast_functions_[make_pair_from_to<long double,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<bool>(varFrom));
+                return{typeid(bool),std::shared_ptr<bool>(varTo)};
+            };
+
+            /* from:long double to:std::int32_t */
+            cast_functions_[make_pair_from_to<long double,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int32_t>(varFrom));
+                return{typeid(std::int32_t),std::shared_ptr<std::int32_t>(varTo)};
+            };
+
+            /* from:long double to:std::int64_t */
+            cast_functions_[make_pair_from_to<long double,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int64_t>(varFrom));
+                return{typeid(std::int64_t),std::shared_ptr<std::int64_t>(varTo)};
+            };
+
+            /* from:long double to:std::int16_t */
+            cast_functions_[make_pair_from_to<long double,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int16_t>(varFrom));
+                return{typeid(std::int16_t),std::shared_ptr<std::int16_t>(varTo)};
+            };
+
+            /* from:long double to:std::int8_t */
+            cast_functions_[make_pair_from_to<long double,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::int8_t>(varFrom));
+                return{typeid(std::int8_t),std::shared_ptr<std::int8_t>(varTo)};
+            };
+
+            /* from:long double to:std::uint32_t */
+            cast_functions_[make_pair_from_to<long double,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint32_t>(varFrom));
+                return{typeid(std::uint32_t),std::shared_ptr<std::uint32_t>(varTo)};
+            };
+
+            /* from:long double to:std::uint64_t */
+            cast_functions_[make_pair_from_to<long double,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint64_t>(varFrom));
+                return{typeid(std::uint64_t),std::shared_ptr<std::uint64_t>(varTo)};
+            };
+
+            /* from:long double to:std::uint16_t */
+            cast_functions_[make_pair_from_to<long double,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint16_t>(varFrom));
+                return{typeid(std::uint16_t),std::shared_ptr<std::uint16_t>(varTo)};
+            };
+
+            /* from:long double to:std::uint8_t */
+            cast_functions_[make_pair_from_to<long double,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<std::uint8_t>(varFrom));
+                return{typeid(std::uint8_t),std::shared_ptr<std::uint8_t>(varTo)};
+            };
+
+            /* from:long double to:char */
+            cast_functions_[make_pair_from_to<long double,char>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<char>(varFrom));
+                return{typeid(char),std::shared_ptr<char>(varTo)};
+            };
+
+            /* from:long double to:char16_t */
+            cast_functions_[make_pair_from_to<long double,char16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<char16_t>(varFrom));
+                return{typeid(char16_t),std::shared_ptr<char16_t>(varTo)};
+            };
+
+            /* from:long double to:char32_t */
+            cast_functions_[make_pair_from_to<long double,char32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<char32_t>(varFrom));
+                return{typeid(char32_t),std::shared_ptr<char32_t>(varTo)};
+            };
+
+            /* from:long double to:float */
+            cast_functions_[make_pair_from_to<long double,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<float>(varFrom));
+                return{typeid(float),std::shared_ptr<float>(varTo)};
+            };
+
+            /* from:long double to:double */
+            cast_functions_[make_pair_from_to<long double,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+                const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+                auto * varTo=new auto(static_cast<double>(varFrom));
+                return{typeid(double),std::shared_ptr<double>(varTo)};
+            };
+        }
         add_std_string_cast(this);
 
     }
@@ -1540,7 +1541,7 @@ void add_std_string_cast(StaticCastMap *arg) {
 
     auto & cast_functions_=arg->cast_functions_;
 
-    cast_functions_[make_pair_from_to<std::string,bool>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
+    cast_functions_[make_pair_from_to<std::string,bool>()]=[](const SharedVoidType&arg)->RuntimeType {
         const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
         bool varTo=false;
         do {
@@ -1564,7 +1565,7 @@ void add_std_string_cast(StaticCastMap *arg) {
         return{ typeid(bool),std::shared_ptr<bool>(new bool(varTo)) };
     };
 
-    cast_functions_[make_pair_from_to<bool,std::string>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
+    cast_functions_[make_pair_from_to<bool,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
         const auto & varFrom=*(reinterpret_cast<const bool*>(arg.get()));
         if (varFrom) {
             return{ typeid(std::string), std::shared_ptr<std::string>(new std::string("true"))};
@@ -1575,9 +1576,9 @@ void add_std_string_cast(StaticCastMap *arg) {
     };
 
     //TODO:write later
-    cast_functions_[make_pair_from_to<std::string,std::int8_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
+    cast_functions_[make_pair_from_to<std::string,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
         const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
-
+        return{};
     };
 
 }
@@ -1609,5 +1610,122 @@ set_static_class_cast_function(
 }/*runtime*/
 
 
+namespace runtime {
+namespace type {
 
+SharedVoidType::SharedVoidType() {
+    flags.set(IS_PLAINDATA);
+    data_.plain_data=nullptr;
+}
+
+SharedVoidType::SharedVoidType(const SharedVoidType&arg) {
+    if (arg.is_plain_data()) {
+        flags=arg.flags;
+        data_.plain_data=arg.data_.plain_data;
+    }
+    else {
+        flags=arg.flags;
+        new (&data_.shared_data)std::shared_ptr<void>(arg.data_.shared_data);
+    }
+}
+
+SharedVoidType::SharedVoidType(SharedVoidType&&arg) {
+    if (arg.is_plain_data()) {
+        flags=arg.flags;
+        data_.plain_data=arg.data_.plain_data;
+    }
+    else {
+        flags=arg.flags;
+        new (&data_.shared_data)std::shared_ptr<void>(std::move(arg.data_.shared_data));
+    }
+}
+
+SharedVoidType&SharedVoidType::operator=(const SharedVoidType&arg) {
+    if (this==&arg) { return *this; }
+    if (arg.is_plain_data()) {
+        if (is_plain_data()) {
+            flags=arg.flags;
+            data_.plain_data=arg.data_.plain_data;
+        }
+        else {
+            flags=arg.flags;
+            data_.shared_data.~shared_ptr();
+            data_.plain_data=arg.data_.plain_data;
+        }
+    }
+    else {
+        if (is_plain_data()) {
+            flags=arg.flags;
+            new (&data_.shared_data)std::shared_ptr<void>(arg.data_.shared_data);
+        }
+        else {
+            flags=arg.flags;
+            data_.shared_data=arg.data_.shared_data;
+        }
+    }
+    return *this;
+}
+
+SharedVoidType&SharedVoidType::operator=(SharedVoidType&&arg) {
+    if (this==&arg) { return *this; }
+    if (arg.is_plain_data()) {
+        if (is_plain_data()) {
+            flags=arg.flags;
+            data_.plain_data=arg.data_.plain_data;
+        }
+        else {
+            flags=arg.flags;
+            data_.shared_data.~shared_ptr();
+            data_.plain_data=arg.data_.plain_data;
+        }
+    }
+    else {
+        if (is_plain_data()) {
+            flags=arg.flags;
+            new (&data_.shared_data)std::shared_ptr<void>(std::move(arg.data_.shared_data));
+        }
+        else {
+            flags=arg.flags;
+            data_.shared_data=std::move(arg.data_.shared_data);
+        }
+    }
+    return *this;
+}
+
+SharedVoidType::SharedVoidType(void *arg) {
+    flags.set(IS_PLAINDATA);
+    data_.plain_data=arg;
+}
+
+SharedVoidType::SharedVoidType(const void * arg) {
+    flags.set(IS_PLAINDATA);
+    flags.set(IS_CONST);
+    data_.plain_data=const_cast<void*>(arg);
+}
+
+SharedVoidType::SharedVoidType(std::shared_ptr<void>arg) {
+    new(&data_.shared_data) std::shared_ptr<void>(std::move(arg));
+}
+SharedVoidType::SharedVoidType(std::shared_ptr<const void>arg) {
+    flags.set(IS_CONST);
+    new(&data_.shared_data) std::shared_ptr<void>(std::move(std::const_pointer_cast<void>(arg)));
+}
+
+SharedVoidType::~SharedVoidType() {
+    if (is_plain_data()) { return; }
+    data_.shared_data.~shared_ptr();
+}
+
+void * SharedVoidType::data() {
+    if (is_plain_data()) { return data_.plain_data; }
+    return data_.shared_data.get();
+}
+
+const void * SharedVoidType::data()const {
+    if (is_plain_data()) { return data_.plain_data; }
+    return data_.shared_data.get();
+}
+
+}/*runtime*/
+}/*type*/
 

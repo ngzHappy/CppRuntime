@@ -2,12 +2,15 @@ QT += core
 QT -= gui
 
 CONFIG += c++14
+DEFINES *= LIBRARY_CPP_RUNTIME
 
-TARGET = CppRuntime
-CONFIG += console
-CONFIG -= app_bundle
+CONFIG(debug,debug|release){
+TARGET = cpp_lib_runtimed
+}else{
+TARGET = cpp_lib_runtime
+}
 
-TEMPLATE = app
+TEMPLATE = lib
 
 SOURCES += main.cpp \
     RuntimeType.cpp
@@ -15,7 +18,21 @@ SOURCES += main.cpp \
 HEADERS += \
     RuntimeType.hpp
 
+win32-msvc*{
 
+CONFIG(debug,debug|release){
+DESTDIR=$$PWD/../binlib/vs/debug_
+}else{
+DESTDIR=$$PWD/../binlib/vs/release_
+}
 
+}else{
 
+CONFIG(debug,debug|release){
+DESTDIR=$$PWD/../binlib/debug_
+}else{
+DESTDIR=$$PWD/../binlib/release_
+}
+
+}
 

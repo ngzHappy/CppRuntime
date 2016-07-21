@@ -30,7 +30,7 @@ make_list() {
     constexpr std::uint32_t varSize=sizeof(types)/sizeof(std::string);
     ans.reserve(varSize*(varSize-1));
 
-    for (std::uint32_t varI=0; varI<varSize;++varI) {
+    for (std::uint32_t varI=0; varI<varSize; ++varI) {
         for (std::uint32_t varJ=0; varJ<varSize; ++varJ) {
             if (varI==varJ) { continue; }
             auto varTemp=std::make_pair(types[varI],types[varJ]);
@@ -41,12 +41,12 @@ make_list() {
     return std::move(ans);
 }
 
-int main(int , char **){
+int main(int,char **) {
 
     auto about_to_print=make_list();
     std::ofstream stream("static_cast_base.txt");
     /*
-    //from:std::double_t to:std::float_t 
+    //from:std::double_t to:std::float_t
     cast_functions_[make_pair_from_to<std::double_t,std::float_t>()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {
         const auto & varFrom=*(reinterpret_cast<const std::double_t*>(arg.get()));
         auto * varTo=new auto(static_cast<std::float_t>(varFrom));
@@ -56,31 +56,29 @@ int main(int , char **){
 
     for (const auto &varI:about_to_print) {
 
-        
+        stream<<"/* from:"<<varI.first<<" to:"<<varI.second<<" */"<<std::endl;
+        stream<<"cast_functions_[make_pair_from_to<";
+        stream<<varI.first;
+        stream<<",";
+        stream<<varI.second;
+        stream<<">()]=[](const SharedVoidType&arg)->RuntimeType {";
+        stream<<std::endl;
 
-            stream<<"/* from:"<<varI.first<<" to:"<<varI.second<<" */"<<std::endl;
-            stream<<"cast_functions_[make_pair_from_to<";
-            stream<<varI.first;
-            stream<<",";
-            stream<<varI.second;
-            stream<<">()]=[](const std::shared_ptr<const void>&arg)->RuntimeType {";
-            stream<<std::endl;
+        stream<<"const auto & varFrom=*(reinterpret_cast<const ";
+        stream<<varI.first<<"*>(arg.get()));"<<std::endl;
 
-            stream<<"const auto & varFrom=*(reinterpret_cast<const ";
-            stream<<varI.first<<"*>(arg.get()));"<<std::endl;
+        stream<<"auto * varTo=new auto(static_cast<";
+        stream<<varI.second<<">(varFrom));"<<std::endl;
 
-            stream<<"auto * varTo=new auto(static_cast<";
-            stream<<varI.second<<">(varFrom));"<<std::endl;
+        stream<<"return{typeid("<<varI.second<<"),std::shared_ptr<"
+            <<varI.second<<">(varTo)};"<<std::endl;
 
-            stream<<"return{typeid("<<varI.second<<"),std::shared_ptr<"
-                <<varI.second<<">(varTo)};"<<std::endl;
+        stream<<"};";
 
-            stream<<"};";
+        stream<<std::endl;
+        stream<<std::endl;
 
-            stream<<std::endl;
-            stream<<std::endl;
 
-       
     }
 
 }

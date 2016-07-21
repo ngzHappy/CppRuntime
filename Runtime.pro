@@ -2,7 +2,8 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     CppRuntime \
-    StaticCastMaker
+    StaticCastMaker \
+    TestCppRuntime
 
-
+TestCppRuntime.depends+=CppRuntime
 
