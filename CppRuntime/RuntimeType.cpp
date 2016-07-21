@@ -13,8 +13,8 @@ namespace {
 template<typename From_,typename To_>
 inline std::pair<std::type_index,std::type_index> make_pair_from_to() {
     return{
-        std::type_index(typeid(typename RuntimType<logical_type<From_>>::type)),
-        std::type_index(typeid(typename RuntimType<logical_type<To_>>::type))
+        std::type_index(typeid(typename RuntimeTypeConcept<logical_type<From_>>::type)),
+        std::type_index(typeid(typename RuntimeTypeConcept<logical_type<To_>>::type))
     };
 }
 

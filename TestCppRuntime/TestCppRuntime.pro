@@ -9,7 +9,9 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    test_void_type.cpp \
+    test_static_type_cast.cpp
 INCLUDEPATH +=$$PWD/../CppRuntime
 
 win32-msvc*{

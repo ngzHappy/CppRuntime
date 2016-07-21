@@ -51,12 +51,12 @@ public:
     SharedVoidType(std::shared_ptr<const void>arg);
 
     template<typename _T_>
-    SharedVoidType(std::shared_ptr<_T_>arg) 
-        :SharedVoidType(std::shared_ptr<void>(std::move(arg))){}
+    SharedVoidType(std::shared_ptr<_T_>arg)
+        :SharedVoidType(std::shared_ptr<void>(std::move(arg))) {}
 
     template<typename _T_>
-    SharedVoidType(std::shared_ptr<const _T_>arg) 
-        :SharedVoidType(std::shared_ptr<const void>(std::move(arg))){}
+    SharedVoidType(std::shared_ptr<const _T_>arg)
+        :SharedVoidType(std::shared_ptr<const void>(std::move(arg))) {}
 
     void * data();
     const void * data()const;
@@ -82,7 +82,10 @@ public:
     operator const std::type_index&() const { return type_id; }
     operator const void *() const { return data.get(); }
     operator void *() { return data.get(); }
- 
+
+    operator SharedVoidType&() { return data; }
+    operator const SharedVoidType&()const { return data; }
+
     RuntimeType():type_id(typeid(void*)) {}
 
     template<typename _T_>
@@ -95,7 +98,7 @@ public:
 typedef RuntimeType(*TypeCastFunction)(const SharedVoidType&);
 
 template<typename _T_>
-class __RuntimTypeBase {
+class __RuntimeTypeConceptBase {
 public:
     using type=logical_type<_T_>;
     static QByteArray readable_class_name() { return ""; }
@@ -106,100 +109,100 @@ private:
 };
 
 template<typename _T_>
-class RuntimType;
+class RuntimeTypeConcept;
 
 template<>
-class RuntimType<std::int32_t> final :public __RuntimTypeBase<std::int32_t> {
+class RuntimeTypeConcept<std::int32_t> final :public __RuntimeTypeConceptBase<std::int32_t> {
 public:
     static QByteArray readable_class_name() { return "std::int32_t"; }
 };
 
 template<>
-class RuntimType<std::int64_t> final :public __RuntimTypeBase<std::int64_t> {
+class RuntimeTypeConcept<std::int64_t> final :public __RuntimeTypeConceptBase<std::int64_t> {
 public:
     static QByteArray readable_class_name() { return "std::int64_t"; }
 };
 
 template<>
-class RuntimType<std::int16_t> final :public __RuntimTypeBase<std::int16_t> {
+class RuntimeTypeConcept<std::int16_t> final :public __RuntimeTypeConceptBase<std::int16_t> {
 public:
     static QByteArray readable_class_name() { return "std::int16_t"; }
 };
 
 template<>
-class RuntimType<std::int8_t> final :public __RuntimTypeBase<std::int8_t> {
+class RuntimeTypeConcept<std::int8_t> final :public __RuntimeTypeConceptBase<std::int8_t> {
 public:
     static QByteArray readable_class_name() { return "std::int8_t"; }
 };
 
 template<>
-class RuntimType<std::uint32_t> final :public __RuntimTypeBase<std::uint32_t> {
+class RuntimeTypeConcept<std::uint32_t> final :public __RuntimeTypeConceptBase<std::uint32_t> {
 public:
     static QByteArray readable_class_name() { return "std::uint32_t"; }
 };
 
 template<>
-class RuntimType<std::uint64_t> final :public __RuntimTypeBase<std::uint64_t> {
+class RuntimeTypeConcept<std::uint64_t> final :public __RuntimeTypeConceptBase<std::uint64_t> {
 public:
     static QByteArray readable_class_name() { return "std::uint64_t"; }
 };
 
 template<>
-class RuntimType<std::uint16_t> final :public __RuntimTypeBase<std::uint16_t> {
+class RuntimeTypeConcept<std::uint16_t> final :public __RuntimeTypeConceptBase<std::uint16_t> {
 public:
     static QByteArray readable_class_name() { return "std::uint16_t"; }
 };
 
 template<>
-class RuntimType<std::uint8_t> final :public __RuntimTypeBase<std::uint8_t> {
+class RuntimeTypeConcept<std::uint8_t> final :public __RuntimeTypeConceptBase<std::uint8_t> {
 public:
     static QByteArray readable_class_name() { return "std::int8_t"; }
 };
 
 template<>
-class RuntimType<float> final :public __RuntimTypeBase<float> {
+class RuntimeTypeConcept<float> final :public __RuntimeTypeConceptBase<float> {
 public:
     static QByteArray readable_class_name() { return "float"; }
 };
 
 template<>
-class RuntimType<double> final :public __RuntimTypeBase<double> {
+class RuntimeTypeConcept<double> final :public __RuntimeTypeConceptBase<double> {
 public:
     static QByteArray readable_class_name() { return "double"; }
 };
 
 template<>
-class RuntimType<long double> final :public __RuntimTypeBase<long double> {
+class RuntimeTypeConcept<long double> final :public __RuntimeTypeConceptBase<long double> {
 public:
     static QByteArray readable_class_name() { return "long double"; }
 };
 
 template<>
-class RuntimType<char> final :public __RuntimTypeBase<char> {
+class RuntimeTypeConcept<char> final :public __RuntimeTypeConceptBase<char> {
 public:
     static QByteArray readable_class_name() { return "char"; }
 };
 
 template<>
-class RuntimType<char16_t> final :public __RuntimTypeBase<char16_t> {
+class RuntimeTypeConcept<char16_t> final :public __RuntimeTypeConceptBase<char16_t> {
 public:
     static QByteArray readable_class_name() { return "char16_t"; }
 };
 
 template<>
-class RuntimType<char32_t> final :public __RuntimTypeBase<char32_t> {
+class RuntimeTypeConcept<char32_t> final :public __RuntimeTypeConceptBase<char32_t> {
 public:
     static QByteArray readable_class_name() { return "char32_t"; }
 };
 
 template<>
-class RuntimType<bool> final :public __RuntimTypeBase<bool> {
+class RuntimeTypeConcept<bool> final :public __RuntimeTypeConceptBase<bool> {
 public:
     static QByteArray readable_class_name() { return "bool"; }
 };
 
 template<>
-class RuntimType<std::string> final :public __RuntimTypeBase<std::string> {
+class RuntimeTypeConcept<std::string> final :public __RuntimeTypeConceptBase<std::string> {
 public:
     static QByteArray readable_class_name() { return "std::string"; }
 };

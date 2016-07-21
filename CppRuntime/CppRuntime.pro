@@ -12,7 +12,7 @@ TARGET = cpp_lib_runtime
 
 TEMPLATE = lib
 
-SOURCES += main.cpp \
+SOURCES += \
     RuntimeType.cpp
 
 HEADERS += \
