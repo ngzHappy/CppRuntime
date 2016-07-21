@@ -1,8 +1,10 @@
-﻿#include "RuntimeType.hpp"
-
-#include <shared_mutex>
+﻿
 #include <map>
-
+#include <exception>
+#include <stdexcept>
+#include <shared_mutex>
+#include <QtCore/qdebug.h>
+#include "RuntimeType.hpp"
 
 namespace runtime {
 namespace type {
@@ -59,7 +61,7 @@ public:
     }
 
     StaticCastMap() {
-        
+
         {/*init cast functions*/
          /* from:bool to:std::int32_t */
             cast_functions_[make_pair_from_to<bool,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
@@ -1580,6 +1582,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(std::int8_t), std::make_shared<std::int8_t>(std::stoi(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1589,6 +1595,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
         try {
             return{ typeid(std::uint8_t), std::make_shared<std::uint8_t>(std::stoi(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1601,6 +1611,10 @@ void add_std_string_cast(StaticCastMap *arg) {
             static_assert(sizeof(int)>sizeof(std::uint16_t),"???");
             return{ typeid(std::uint16_t), std::make_shared<std::uint16_t>(std::stoi(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1611,6 +1625,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             static_assert(sizeof(int)>sizeof(std::int16_t),"???");
             return{ typeid(std::int16_t), std::make_shared<std::int16_t>(std::stoi(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1623,6 +1641,10 @@ void add_std_string_cast(StaticCastMap *arg) {
             static_assert(sizeof(long)>=sizeof(std::int32_t),"???");
             return{ typeid(std::int32_t), std::make_shared<std::int32_t>(std::stol(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1633,6 +1655,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             static_assert(sizeof(unsigned long)>=sizeof(std::uint32_t),"???");
             return{ typeid(std::uint32_t), std::make_shared<std::uint32_t>(std::stoul(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1645,6 +1671,10 @@ void add_std_string_cast(StaticCastMap *arg) {
             static_assert(sizeof(long long)>=sizeof(std::int64_t),"???");
             return{ typeid(std::int64_t), std::make_shared<std::int64_t>(std::stoll(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1656,6 +1686,10 @@ void add_std_string_cast(StaticCastMap *arg) {
             static_assert(sizeof(unsigned long long)>=sizeof(std::uint64_t),"???");
             return{ typeid(std::uint64_t), std::make_shared<std::uint64_t>(std::stoull(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1665,6 +1699,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
         try {
             return{ typeid(float), std::make_shared<float>(std::stof(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1676,6 +1714,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(double), std::make_shared<double>(std::stod(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1685,6 +1727,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
         try {
             return{ typeid(long double), std::make_shared<long double>(std::stold(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1696,6 +1742,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1705,6 +1755,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1716,6 +1770,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1725,6 +1783,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1736,6 +1798,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1745,6 +1811,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1756,6 +1826,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1765,6 +1839,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
@@ -1776,6 +1854,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1786,6 +1868,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
         }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
+        }
         catch (...) {
             return{};
         }
@@ -1795,6 +1881,10 @@ void add_std_string_cast(StaticCastMap *arg) {
         const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
         try {
             return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch(std::exception&e){
+            qDebug().noquote()<<e.what();
+            return{};
         }
         catch (...) {
             return{};
