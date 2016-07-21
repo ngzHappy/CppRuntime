@@ -61,6 +61,12 @@ public:
     void * data();
     const void * data()const;
 
+    template<typename _T_>
+    _T_*value() { return reinterpret_cast<_T_*>(data()); }
+
+    template<typename _T_>
+    const _T_*value()const { return reinterpret_cast<const _T_*>(data()); }
+
     const void *get()const { return data(); }
     void *get() { return data(); }
 

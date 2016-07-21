@@ -7,5 +7,8 @@ extern void test_static_type_cast();
 int main(int , char **)
 {
     test_void_shared();
-    void test_static_type_cast();
+    test_static_type_cast();
 }
+
+
+
