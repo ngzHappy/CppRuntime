@@ -1575,10 +1575,230 @@ void add_std_string_cast(StaticCastMap *arg) {
         }
     };
 
-    //TODO:write later
     cast_functions_[make_pair_from_to<std::string,std::int8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
         const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
-        return{};
+        try {
+            return{ typeid(std::int8_t), std::make_shared<std::int8_t>(std::stoi(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,std::uint8_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            return{ typeid(std::uint8_t), std::make_shared<std::uint8_t>(std::stoi(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,std::uint16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            static_assert(sizeof(int)>sizeof(std::uint16_t),"???");
+            return{ typeid(std::uint16_t), std::make_shared<std::uint16_t>(std::stoi(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,std::int16_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            static_assert(sizeof(int)>sizeof(std::int16_t),"???");
+            return{ typeid(std::int16_t), std::make_shared<std::int16_t>(std::stoi(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,std::int32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            static_assert(sizeof(long)>=sizeof(std::int32_t),"???");
+            return{ typeid(std::int32_t), std::make_shared<std::int32_t>(std::stol(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,std::uint32_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            static_assert(sizeof(unsigned long)>=sizeof(std::uint32_t),"???");
+            return{ typeid(std::uint32_t), std::make_shared<std::uint32_t>(std::stoul(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,std::int64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            static_assert(sizeof(long long)>=sizeof(std::int64_t),"???");
+            return{ typeid(std::int64_t), std::make_shared<std::int64_t>(std::stoll(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,std::uint64_t>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            static_assert(sizeof(unsigned long long)>=sizeof(std::uint64_t),"???");
+            return{ typeid(std::uint64_t), std::make_shared<std::uint64_t>(std::stoull(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,float>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            return{ typeid(float), std::make_shared<float>(std::stof(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,double>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            return{ typeid(double), std::make_shared<double>(std::stod(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::string,long double>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::string*>(arg.get()));
+        try {
+            return{ typeid(long double), std::make_shared<long double>(std::stold(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::int8_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::int8_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::uint8_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::uint8_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::uint16_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::uint16_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::int16_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::int16_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::int32_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::int32_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::uint32_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::uint32_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::int64_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::int64_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<std::uint64_t,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const std::uint64_t*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<float,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const float*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<double,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const double*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
+    };
+
+    cast_functions_[make_pair_from_to<long double,std::string>()]=[](const SharedVoidType&arg)->RuntimeType {
+        const auto & varFrom=*(reinterpret_cast<const long double*>(arg.get()));
+        try {
+            return{ typeid(std::string), std::make_shared<std::string>(std::to_string(varFrom))};
+        }
+        catch (...) {
+            return{};
+        }
     };
 
 }
