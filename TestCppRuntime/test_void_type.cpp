@@ -6,6 +6,11 @@ void test_void_shared() {
     using namespace runtime::type;
 
     {
+        auto rname=runtime::type::RuntimeTypeConcept<std::string>::readable_class_name();
+        assert(rname=="std::string");
+    }
+
+    {
         runtime::type::SharedVoidType t0;
         assert(t0.is_plain_data()==true);
         assert(t0.is_const()==false);
