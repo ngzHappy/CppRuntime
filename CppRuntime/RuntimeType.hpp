@@ -110,7 +110,7 @@ template<typename _T_>
 class __RuntimeTypeConceptBase {
 public:
     using type=logical_type<_T_>;
-    static QByteArray readable_class_name() { return ""; }
+    static name_type readable_class_name() { return ""; }
     static std::type_index logical_type_index() { return typeid(type); }
     static constexpr bool is_static_type() { return false==std::has_virtual_destructor<type>::value; }
 private:
@@ -123,102 +123,115 @@ class RuntimeTypeConcept;
 template<>
 class RuntimeTypeConcept<std::int32_t> final :public __RuntimeTypeConceptBase<std::int32_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::int32_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::int32_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::int64_t> final :public __RuntimeTypeConceptBase<std::int64_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::int64_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::int64_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::int16_t> final :public __RuntimeTypeConceptBase<std::int16_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::int16_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::int16_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::int8_t> final :public __RuntimeTypeConceptBase<std::int8_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::int8_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::int8_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::uint32_t> final :public __RuntimeTypeConceptBase<std::uint32_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::uint32_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::uint32_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::uint64_t> final :public __RuntimeTypeConceptBase<std::uint64_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::uint64_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::uint64_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::uint16_t> final :public __RuntimeTypeConceptBase<std::uint16_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::uint16_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::uint16_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::uint8_t> final :public __RuntimeTypeConceptBase<std::uint8_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::int8_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::int8_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<float> final :public __RuntimeTypeConceptBase<float> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="float"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="float"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<double> final :public __RuntimeTypeConceptBase<double> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="double"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="double"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<long double> final :public __RuntimeTypeConceptBase<long double> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="long double"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="long double"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<char> final :public __RuntimeTypeConceptBase<char> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="char"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="char"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<char16_t> final :public __RuntimeTypeConceptBase<char16_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="char16_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="char16_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<char32_t> final :public __RuntimeTypeConceptBase<char32_t> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="char32_t"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="char32_t"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<bool> final :public __RuntimeTypeConceptBase<bool> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="bool"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="bool"_name; return ans; }
 };
 
 template<>
 class RuntimeTypeConcept<std::string> final :public __RuntimeTypeConceptBase<std::string> {
 public:
-    static QByteArray readable_class_name() { const static auto ans="std::string"_name; return ans; }
+    static name_type readable_class_name() { const static auto ans="std::string"_name; return ans; }
 };
-
 
 RUNTIME_TYPE_IMPORT TypeCastFunction get_static_class_cast_function(const std::type_index&,const std::type_index&);
 RUNTIME_TYPE_IMPORT void set_static_class_cast_function(const std::type_index&,const std::type_index&,TypeCastFunction);
+
+class RuntimeClasInfo {
+public:
+    virtual ~RuntimeClasInfo()=default;
+    virtual name_type readable_class_name() const=0;
+    virtual std::type_index logical_type_index()const=0;
+    virtual bool is_static_type() const=0;
+    virtual TypeCastFunction get_class_cast_function(const std::type_index&argFrom,const std::type_index&argTo) {
+        return runtime::type::get_static_class_cast_function(argFrom,argTo);
+    }
+};
+
+RUNTIME_TYPE_IMPORT void set_runtime_class_info(const std::type_index&,const RuntimeClasInfo*);
+RUNTIME_TYPE_IMPORT const RuntimeClasInfo * get_runtime_class_info(const std::type_index&);
 
 }
 }

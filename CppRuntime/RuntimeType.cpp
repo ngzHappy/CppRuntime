@@ -1,8 +1,10 @@
-﻿
+﻿#include <cassert>
+
 #include <map>
 #include <exception>
 #include <stdexcept>
 #include <shared_mutex>
+#include <unordered_map>
 #include <QtCore/qdebug.h>
 #include "RuntimeType.hpp"
 
@@ -15,10 +17,13 @@ namespace {
 template<typename From_,typename To_>
 inline std::pair<std::type_index,std::type_index> make_pair_from_to() {
     return{
-        std::type_index(typeid(typename RuntimeTypeConcept<logical_type<From_>>::type)),
-        std::type_index(typeid(typename RuntimeTypeConcept<logical_type<To_>>::type))
+        std::type_index(typeid(typename RuntimeTypeConcept<logical_type<From_>/**/>::type)),
+        std::type_index(typeid(typename RuntimeTypeConcept<logical_type<To_>/**/>::type))
     };
 }
+
+template<typename _T_>
+void do_not_delete(_T_*) {}
 
 class StaticCastMap;
 void add_std_string_cast(StaticCastMap*);
@@ -26,8 +31,10 @@ void add_std_string_cast(StaticCastMap*);
 class StaticCastMap {
     friend void add_std_string_cast(StaticCastMap*);
     std::shared_ptr<std::shared_timed_mutex> mutex_read_write_{
-        new std::shared_timed_mutex,[](auto *) {
-        /*do not delete because it just use for static*/} };
+        new std::shared_timed_mutex,[](auto *arg) {
+        /*do not delete because it just use for static*/
+        do_not_delete(arg);
+    } };
     std::map<
         std::pair<std::type_index,std::type_index>,
         runtime::type::TypeCastFunction
@@ -1894,8 +1901,10 @@ void add_std_string_cast(StaticCastMap *arg) {
 }
 
 StaticCastMap & get_static_cast_map() {
-    static StaticCastMap static_cast_map_;
-    return static_cast_map_;
+    /*the data do not need delete ,it is global static*/
+    static std::unique_ptr<StaticCastMap,void(*)(StaticCastMap*)> 
+        static_cast_map_{ new StaticCastMap,&do_not_delete<StaticCastMap>};
+    return *static_cast_map_;
 }
 
 }
@@ -2036,6 +2045,122 @@ const void * SharedVoidType::data()const {
     return data_.shared_data.get();
 }
 
-}/*runtime*/
 }/*type*/
+}/*runtime*/
+
+namespace runtime {/*runtime*/
+namespace type {/*type*/
+
+namespace __private {
+namespace {
+
+using info_map_type_=std::unordered_map<std::type_index,const RuntimeClasInfo*>;
+
+template<typename _T_>
+inline void _add_info_static_t(info_map_type_ & arg) {
+
+    class type_info_ final:public runtime::type::RuntimeClasInfo {
+    public:
+        virtual name_type readable_class_name() const override{
+            return runtime::type::RuntimeTypeConcept<runtime::type::logical_type<_T_>>::readable_class_name();
+        }
+        virtual std::type_index logical_type_index()const override{
+            return runtime::type::RuntimeTypeConcept<runtime::type::logical_type<_T_>>::logical_type_index();
+        }
+        virtual bool is_static_type() const override{
+            return runtime::type::RuntimeTypeConcept<runtime::type::logical_type<_T_>>::is_static_type();
+        }
+    };
+
+    arg[typeid(typename runtime::type::RuntimeTypeConcept<runtime::type::logical_type<_T_>>::type)]
+        =new type_info_;
+
+}
+
+class StaticRuntimClassInfo {
+    std::shared_ptr<std::shared_mutex> read_write_lock_{
+        new std::shared_mutex,
+        [](auto *arg) {do_not_delete(arg); }
+    };
+
+    info_map_type_ data_;
+public:
+
+    const RuntimeClasInfo* get_info(const std::type_index&arg) {
+        auto & lock_data_=read_write_lock_;
+        std::shared_lock<std::shared_mutex> lock_{*lock_data_};
+        auto pos_=data_.find(arg);
+        if(pos_!=data_.end()){
+            return pos_->second;
+        }
+        return nullptr;
+    }
+
+    void set_info(
+        const std::type_index&arg,
+        const RuntimeClasInfo*argInfo
+    ) {
+        if (argInfo==nullptr) { return; }
+        auto & lock_data_=read_write_lock_;
+        std::unique_lock<std::shared_mutex> lock_{*lock_data_};
+#if !defined(NDEBUG)/*if this is in debug*/
+        {/*a class info just can be add once*/
+            auto varPos=data_.find(arg);
+            assert(varPos==data_.end());
+        }
+#endif
+        data_[arg]=argInfo;
+    }
+
+    StaticRuntimClassInfo() {
+        _add_info_static_t<bool>(data_);
+        _add_info_static_t<char>(data_);
+        _add_info_static_t<char16_t>(data_);
+        _add_info_static_t<char32_t>(data_);
+        _add_info_static_t<std::int8_t>(data_);
+        _add_info_static_t<std::uint8_t>(data_);
+        _add_info_static_t<std::int16_t>(data_);
+        _add_info_static_t<std::uint16_t>(data_);
+        _add_info_static_t<std::int32_t>(data_);
+        _add_info_static_t<std::uint32_t>(data_);
+        _add_info_static_t<std::int64_t>(data_);
+        _add_info_static_t<std::uint64_t>(data_);
+        _add_info_static_t<float>(data_);
+        _add_info_static_t<double>(data_);
+        _add_info_static_t<long double>(data_);
+        _add_info_static_t<std::string>(data_);
+    }
+
+};
+
+StaticRuntimClassInfo & get_runtime_class_infos() {
+    /*do not need delete the class*/
+    static std::unique_ptr<StaticRuntimClassInfo,void(*)(StaticRuntimClassInfo*)>
+        ans{
+        new StaticRuntimClassInfo,
+        &do_not_delete<StaticRuntimClassInfo>
+    };
+    return *ans;
+}
+
+}
+}
+
+void set_runtime_class_info(
+    const std::type_index&arg,
+    const RuntimeClasInfo*argInfo) {
+    return __private::get_runtime_class_infos().set_info(arg,argInfo);
+}
+
+const RuntimeClasInfo * get_runtime_class_info(const std::type_index&arg) {
+    return __private::get_runtime_class_infos().get_info(arg);
+}
+
+
+}/*type*/
+}/*runtime*/
+
+
+
+
 

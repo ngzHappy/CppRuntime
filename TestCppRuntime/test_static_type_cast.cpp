@@ -22,6 +22,7 @@ void test_static_type_cast() {
         double ans_double=*ans.data.value<double>();
 
         assert(ans_double==12.0);
+        (void)ans_double;
     }
 
     {
@@ -35,6 +36,7 @@ void test_static_type_cast() {
         auto ans=cast_function(tvalue);
         auto & var_ans=*ans.data.value<std::string>();
         assert(var_ans=="true");
+        (void)var_ans;
     }
 
     {
@@ -48,6 +50,7 @@ void test_static_type_cast() {
         auto ans=cast_function(tvalue);
         auto & var_ans=*ans.data.value<std::string>();
         assert(var_ans=="false");
+        (void)var_ans;
     }
 
     {
@@ -61,6 +64,7 @@ void test_static_type_cast() {
         auto ans=cast_function(tvalue);
         auto & var_ans=*ans.data.value<bool>();
         assert(var_ans==false);
+        (void)var_ans;
     }
 
 }
