@@ -12,6 +12,7 @@
 #include <type_traits>
 #include <QtCore/qglobal.h>
 #include <QtCore/qbytearray.h>
+class QObject;
 
 #if defined(LIBRARY_CPP_RUNTIME)
 #  define RUNTIME_TYPE_IMPORT Q_DECL_EXPORT
@@ -30,6 +31,7 @@ using logical_type=std::remove_cv_t<std::remove_pointer_t<std::remove_reference_
 
 class RUNTIME_TYPE_IMPORT SharedVoidType final {
     std::bitset<sizeof(void*)*8>flags;
+    static_assert(sizeof(void*)>=4,"the library is for 32bit or more");
     union Data {
     public:
         std::shared_ptr<void>shared_data;
@@ -37,11 +39,13 @@ class RUNTIME_TYPE_IMPORT SharedVoidType final {
         Data() {}
         ~Data() {}
     }data_;
+    void * extern_data_=nullptr;
 public:
 
     enum {
         IS_CONST,
         IS_PLAINDATA,
+        IS_EXTERNDATA_QOBJECT,
     };
 
     SharedVoidType();
@@ -81,6 +85,11 @@ public:
     SharedVoidType&operator=(SharedVoidType&&arg);
 
     ~SharedVoidType();
+
+    QObject * qobject() const;
+    void set_extern_data(const void *) { extern_data_=nullptr; }
+    void set_extern_data(const QObject *arg);
+
 };
 
 template<typename _Type_>

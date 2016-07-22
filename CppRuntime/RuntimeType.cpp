@@ -1938,6 +1938,7 @@ SharedVoidType::SharedVoidType() {
 }
 
 SharedVoidType::SharedVoidType(const SharedVoidType&arg) {
+    extern_data_=arg.extern_data_;
     if (arg.is_plain_data()) {
         flags=arg.flags;
         data_.plain_data=arg.data_.plain_data;
@@ -1949,6 +1950,7 @@ SharedVoidType::SharedVoidType(const SharedVoidType&arg) {
 }
 
 SharedVoidType::SharedVoidType(SharedVoidType&&arg) {
+    extern_data_=arg.extern_data_;
     if (arg.is_plain_data()) {
         flags=arg.flags;
         data_.plain_data=arg.data_.plain_data;
@@ -1961,6 +1963,7 @@ SharedVoidType::SharedVoidType(SharedVoidType&&arg) {
 
 SharedVoidType&SharedVoidType::operator=(const SharedVoidType&arg) {
     if (this==&arg) { return *this; }
+    extern_data_=arg.extern_data_;
     if (arg.is_plain_data()) {
         if (is_plain_data()) {
             flags=arg.flags;
@@ -1987,6 +1990,7 @@ SharedVoidType&SharedVoidType::operator=(const SharedVoidType&arg) {
 
 SharedVoidType&SharedVoidType::operator=(SharedVoidType&&arg) {
     if (this==&arg) { return *this; }
+    extern_data_=arg.extern_data_;
     if (arg.is_plain_data()) {
         if (is_plain_data()) {
             flags=arg.flags;
@@ -2020,6 +2024,19 @@ SharedVoidType::SharedVoidType(const void * arg) {
     flags.set(IS_PLAINDATA);
     flags.set(IS_CONST);
     data_.plain_data=const_cast<void*>(arg);
+}
+
+QObject * SharedVoidType::qobject() const{ 
+    if (flags.test(IS_EXTERNDATA_QOBJECT)) { 
+        return reinterpret_cast<QObject*>(extern_data_); 
+    }
+    return nullptr;
+}
+
+void SharedVoidType::set_extern_data(const QObject *arg) { 
+    extern_data_=const_cast<QObject *>(arg);
+    flags.set(IS_EXTERNDATA_QOBJECT);
+    /*clear other extern data flags*/
 }
 
 SharedVoidType::SharedVoidType(std::shared_ptr<void>arg) {
