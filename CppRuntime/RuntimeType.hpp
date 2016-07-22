@@ -243,19 +243,20 @@ RUNTIME_TYPE_IMPORT void set_to_logical_type_index(const std::type_index&,ToLogi
 
 RUNTIME_TYPE_IMPORT void set_runtime_class_info(const std::type_index&,const RuntimeClasInfo*);
 RUNTIME_TYPE_IMPORT const RuntimeClasInfo * get_runtime_class_info(const std::type_index&);
-inline const std::pair<const RuntimeClasInfo *,RuntimeType> get_runtime_class_info(const RuntimeType&arg) {
+inline const std::pair<const RuntimeClasInfo *,RuntimeType> get_runtime_class_info(RuntimeType arg) {
     {
         auto ans=get_runtime_class_info(arg.type_id);
-        if (ans) { return { ans ,arg}; }
+        if (ans) { return{ ans ,std::move(arg) }; }
     }
     {
         auto varLogicalCast=get_to_logical_type_index(arg.type_id);
         if (varLogicalCast) {
             auto varCast=varLogicalCast();
             if (varCast) {
-                auto ans=get_runtime_class_info(varCast->logical_type());
+                const auto & varLogicalType=varCast->logical_type();
+                auto ans=get_runtime_class_info(varLogicalType);
                 if (ans) {
-                    return{ ans,{varCast->logical_type(),varCast->cast(arg)} };
+                    return{ ans,{varLogicalType,varCast->cast(arg)} };
                 }
             }
         }
