@@ -92,15 +92,42 @@ public:
         std::remove_pointer_t<
         std::remove_reference_t<_Type_>/**/>/**/>;
 
+    FunctionPackPointer()=default;
+    FunctionPackPointer(const FunctionPackPointer&)=default;
+    FunctionPackPointer(FunctionPackPointer&&)=default;
+
     FunctionPackPointer(type*arg):data_(arg) {}
     FunctionPackPointer(const type*arg):data_(arg) {}
+
+    template<typename _U_>
+    FunctionPackPointer(_U_*arg):data_(static_cast<type*>(arg)) {}
+    template<typename _U_>
+    FunctionPackPointer(const _U_*arg):data_(static_cast<const type*>(arg)) {}
+
     FunctionPackPointer(const std::shared_ptr<type>&arg):data_(arg) {}
     FunctionPackPointer(const std::shared_ptr<const type>&arg):data_(arg) {}
+    FunctionPackPointer(std::shared_ptr<type>&&arg):data_(std::move(arg)) {}
+    FunctionPackPointer(std::shared_ptr<const type>&&arg):data_(std::move(arg)) {}
+
+    template<typename _U_>
+    FunctionPackPointer(const std::shared_ptr<_U_>&arg):data_(std::static_pointer_cast<type>(arg)) {}
+    template<typename _U_>
+    FunctionPackPointer(const std::shared_ptr<const _U_>&arg):data_(std::static_pointer_cast<const type>(arg)) {}
+    template<typename _U_>
+    FunctionPackPointer(std::shared_ptr<_U_>&&arg):data_(std::static_pointer_cast<type>(std::move(arg))) {}
+    template<typename _U_>
+    FunctionPackPointer(std::shared_ptr<const _U_>&&arg):data_(std::static_pointer_cast<const type>(std::move(arg))) {}
 
     type*operator->() { return reinterpret_cast<type*>(data_.data()); }
     const type*operator->()const { return reinterpret_cast<const type*>(data_.data()); }
 
     operator bool() const { return bool(data_); }
+
+    type*data() { return reinterpret_cast<type*>(data_.data()); }
+    const type*data() const { return reinterpret_cast<const type*>(data_.data()); }
+
+    type*get() { return data(); }
+    const type *get() const { return data(); }
 };
 
 class RuntimeType {
