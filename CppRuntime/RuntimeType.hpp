@@ -230,9 +230,38 @@ public:
     }
 };
 
+class RuntimeLogicalTypeCast {
+public:
+    virtual ~RuntimeLogicalTypeCast()=default;
+    virtual std::type_index logical_type()const=0;
+    virtual SharedVoidType cast(const SharedVoidType&)const=0;
+};
+
+typedef const RuntimeLogicalTypeCast*(*ToLogicalTypeIndex)(void);
+RUNTIME_TYPE_IMPORT ToLogicalTypeIndex get_to_logical_type_index(const std::type_index&);
+RUNTIME_TYPE_IMPORT void set_to_logical_type_index(const std::type_index&,ToLogicalTypeIndex);
+
 RUNTIME_TYPE_IMPORT void set_runtime_class_info(const std::type_index&,const RuntimeClasInfo*);
 RUNTIME_TYPE_IMPORT const RuntimeClasInfo * get_runtime_class_info(const std::type_index&);
-
+inline const std::pair<const RuntimeClasInfo *,RuntimeType> get_runtime_class_info(const RuntimeType&arg) {
+    {
+        auto ans=get_runtime_class_info(arg.type_id);
+        if (ans) { return { ans ,arg}; }
+    }
+    {
+        auto varLogicalCast=get_to_logical_type_index(arg.type_id);
+        if (varLogicalCast) {
+            auto varCast=varLogicalCast();
+            if (varCast) {
+                auto ans=get_runtime_class_info(varCast->logical_type());
+                if (ans) {
+                    return{ ans,{varCast->logical_type(),varCast->cast(arg)} };
+                }
+            }
+        }
+    }
+    return{ nullptr,{} };
+}
 //typedef std::type_index (*NameToIndex)(void);
 
 //RUNTIME_TYPE_IMPORT NameToIndex get_name_to_index(const name_type&);

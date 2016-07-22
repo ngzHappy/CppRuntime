@@ -2161,6 +2161,64 @@ const RuntimeClasInfo * get_runtime_class_info(const std::type_index&arg) {
 }/*runtime*/
 
 
+namespace runtime {
+namespace type {
+
+namespace __private {
+namespace {
+
+class StaticToLogicalTypeIndex {
+    using type_mutex=std::shared_timed_mutex;
+    std::unordered_map<std::type_index,ToLogicalTypeIndex>data_;
+    std::shared_ptr<type_mutex> lock_mutex_{
+        new type_mutex,
+        [](auto *arg) {do_not_delete(arg); }
+    };
+public:
+    StaticToLogicalTypeIndex() {}
+
+    void add(const std::type_index&argKey,ToLogicalTypeIndex argValue) {
+        if (argValue) {
+            auto &var=lock_mutex_;
+            std::unique_lock<type_mutex> lock_{ *var };
+            data_[argKey]=argValue;
+        }
+    }
+
+    ToLogicalTypeIndex find_item(const std::type_index&argKey) {
+        auto &var=lock_mutex_;
+        std::shared_lock<type_mutex> lock_{ *var };
+        auto varValue=data_.find(argKey);
+        if (varValue==data_.end()) { return nullptr; }
+        return varValue->second;
+    }
+
+};
+
+StaticToLogicalTypeIndex & getData() {
+    static std::unique_ptr<StaticToLogicalTypeIndex,void(*)(StaticToLogicalTypeIndex*)>
+        ans{
+        new StaticToLogicalTypeIndex,
+        &do_not_delete<StaticToLogicalTypeIndex>
+    };
+    return *ans;
+}
+
+}/*namespace*/
+}/*__private*/
+
+ToLogicalTypeIndex get_to_logical_type_index(const std::type_index&arg) {
+    return __private::getData().find_item(arg);
+}
+
+void set_to_logical_type_index(const std::type_index&argKey,ToLogicalTypeIndex argValue) {
+    __private::getData().add(argKey,argValue);
+}
+
+}/*type*/
+}/*runtime*/
+
+
 
 
 
