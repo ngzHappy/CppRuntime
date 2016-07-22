@@ -110,7 +110,7 @@ template<typename _T_>
 class __RuntimeTypeConceptBase {
 public:
     using type=logical_type<_T_>;
-    static name_type readable_class_name() { return ""; }
+    static name_type readable_class_name() { return "not set"; }
     static std::type_index logical_type_index() { return typeid(type); }
     static constexpr bool is_static_type() { return false==std::has_virtual_destructor<type>::value; }
 private:
@@ -232,6 +232,11 @@ public:
 
 RUNTIME_TYPE_IMPORT void set_runtime_class_info(const std::type_index&,const RuntimeClasInfo*);
 RUNTIME_TYPE_IMPORT const RuntimeClasInfo * get_runtime_class_info(const std::type_index&);
+
+//typedef std::type_index (*NameToIndex)(void);
+
+//RUNTIME_TYPE_IMPORT NameToIndex get_name_to_index(const name_type&);
+//RUNTIME_TYPE_IMPORT void set_name_to_index(const name_type&,NameToIndex);
 
 }
 }

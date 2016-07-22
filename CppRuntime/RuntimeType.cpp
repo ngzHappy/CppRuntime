@@ -1902,7 +1902,7 @@ void add_std_string_cast(StaticCastMap *arg) {
 
 StaticCastMap & get_static_cast_map() {
     /*the data do not need delete ,it is global static*/
-    static std::unique_ptr<StaticCastMap,void(*)(StaticCastMap*)> 
+    static std::unique_ptr<StaticCastMap,void(*)(StaticCastMap*)>
         static_cast_map_{ new StaticCastMap,&do_not_delete<StaticCastMap>};
     return *static_cast_map_;
 }
@@ -2078,8 +2078,8 @@ inline void _add_info_static_t(info_map_type_ & arg) {
 }
 
 class StaticRuntimClassInfo {
-    std::shared_ptr<std::shared_mutex> read_write_lock_{
-        new std::shared_mutex,
+    std::shared_ptr<std::shared_timed_mutex> read_write_lock_{
+        new std::shared_timed_mutex,
         [](auto *arg) {do_not_delete(arg); }
     };
 
@@ -2088,7 +2088,7 @@ public:
 
     const RuntimeClasInfo* get_info(const std::type_index&arg) {
         auto & lock_data_=read_write_lock_;
-        std::shared_lock<std::shared_mutex> lock_{*lock_data_};
+        std::shared_lock<std::shared_timed_mutex> lock_{*lock_data_};
         auto pos_=data_.find(arg);
         if(pos_!=data_.end()){
             return pos_->second;
@@ -2102,7 +2102,7 @@ public:
     ) {
         if (argInfo==nullptr) { return; }
         auto & lock_data_=read_write_lock_;
-        std::unique_lock<std::shared_mutex> lock_{*lock_data_};
+        std::unique_lock<std::shared_timed_mutex> lock_{*lock_data_};
 #if !defined(NDEBUG)/*if this is in debug*/
         {/*a class info just can be add once*/
             auto varPos=data_.find(arg);
