@@ -83,6 +83,26 @@ public:
     ~SharedVoidType();
 };
 
+template<typename _Type_>
+class FunctionPackPointer {
+    SharedVoidType data_;
+public:
+    using type=
+        std::remove_cv_t<
+        std::remove_pointer_t<
+        std::remove_reference_t<_Type_>/**/>/**/>;
+
+    FunctionPackPointer(type*arg):data_(arg) {}
+    FunctionPackPointer(const type*arg):data_(arg) {}
+    FunctionPackPointer(const std::shared_ptr<type>&arg):data_(arg) {}
+    FunctionPackPointer(const std::shared_ptr<const type>&arg):data_(arg) {}
+
+    type*operator->() { return reinterpret_cast<type*>(data_.data()); }
+    const type*operator->()const { return reinterpret_cast<const type*>(data_.data()); }
+
+    operator bool() const { return bool(data_); }
+};
+
 class RuntimeType {
 public:
     std::type_index type_id;
@@ -237,7 +257,7 @@ public:
     virtual SharedVoidType cast(const SharedVoidType&)const=0;
 };
 
-typedef const RuntimeLogicalTypeCast*(*ToLogicalTypeIndex)(void);
+typedef const FunctionPackPointer<RuntimeLogicalTypeCast>/**/(*ToLogicalTypeIndex)(void);
 RUNTIME_TYPE_IMPORT ToLogicalTypeIndex get_to_logical_type_index(const std::type_index&);
 RUNTIME_TYPE_IMPORT void set_to_logical_type_index(const std::type_index&,ToLogicalTypeIndex);
 
